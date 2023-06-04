@@ -2790,6 +2790,10 @@ a.icon-element:hover {
         display: none !important;
     }
 
+    .logo{
+        max-width: 130px;
+    }
+
     .mobile-image {
         display: block !important;
     }
