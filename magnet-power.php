@@ -332,7 +332,7 @@ require_once 'config.php';
 
     // Payment request handler
     function buyNow(){
-        document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'Wait';
+        document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'請稍等';
         createCheckoutSession().then(function (data) {
             if (data.sessionId) {
                 stripe.redirectToCheckout({

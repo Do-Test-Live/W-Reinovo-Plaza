@@ -96,11 +96,10 @@ if (!empty($_GET['session_id'])) {
                     if (!empty($prevRow)) {
                         $payment_id = $prevRow['id'];
                     } else {
-                        $user_id = $_SESSION['user_id'];
                         // Insert transaction data into the database
-                        $sqlQ = "INSERT INTO transactions (customer_name,customer_email,information_id,item_name,item_number,item_price,item_price_currency,paid_amount,paid_amount_currency,txn_id,payment_status,stripe_checkout_session_id,created,modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
+                        $sqlQ = "INSERT INTO transactions (customer_name,customer_email,item_name,item_number,item_price,item_price_currency,paid_amount,paid_amount_currency,txn_id,payment_status,stripe_checkout_session_id,created,modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
                         $stmt = $db->prepare($sqlQ);
-                        $stmt->bind_param("ssissdsdssss", $customer_name, $customer_email, $user_id, $productName, $productID, $productPrice, $currency, $paidAmount, $paidCurrency, $transactionID, $payment_status, $session_id);
+                        $stmt->bind_param("ssssdsdssss", $customer_name, $customer_email, $productName, $productID, $productPrice, $currency, $paidAmount, $paidCurrency, $transactionID, $payment_status, $session_id);
                         $insert = $stmt->execute();
 
                         if ($insert) {
@@ -127,13 +126,11 @@ if (!empty($_GET['session_id'])) {
 
 <?php if ($statusMsg == "Your Payment has been Successful!") {
     ?>
-    <h1 class="successful">Your Payment been failed!</h1>
-    <p class="error"><?php echo $statusMsg; ?></p>
+    <h1 class="successful">Your Payment has been Successful!</h1>
     <a href="index.html" class="btn-link">Back to Home Page</a>
     <?php
 } else { ?>
     <h1 class="error">Your Payment been failed!</h1>
-    <p class="error"><?php echo $statusMsg; ?></p>
-    <p>Status mesage not match.</p>
+    <a href="index.html" class="btn-link">Back to Home Page</a>
     <?php
 } ?>
