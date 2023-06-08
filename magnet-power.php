@@ -218,12 +218,12 @@ require_once 'config.php';
                         <p class="text-black fw-medium mr-2">Qty:</p>
                         <div class="quantity-box d-flex align-items-center">
                             <a href="javascript:void(0)" class="qtyBtn qtyDec"><i class="fal fa-minus"></i></a>
-                            <input class="qtyInput" type="text" name="quantity" value="1" min="1">
+                            <input class="qtyInput" type="text" name="quantity" id="quantity" value="1" min="1">
                             <a href="javascript:void(0)" class="qtyBtn qtyInc"><i class="far fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
-                        <button class="btn btn-primary mr-4" id="payBtn"><i class="fal fa-shopping-cart mr-1"></i> Buy Now</button>
+                        <button class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();"><i class="fal fa-shopping-cart mr-1"></i> 購買</button>
                     </div>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
@@ -331,8 +331,8 @@ require_once 'config.php';
     const payBtn = document.querySelector("#payButton");
 
     // Payment request handler
-    payBtn.addEventListener("click", function (evt) {
-
+    function buyNow(){
+        document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'Wait';
         createCheckoutSession().then(function (data) {
             if (data.sessionId) {
                 stripe.redirectToCheckout({
@@ -342,11 +342,13 @@ require_once 'config.php';
                 handleResult(data);
             }
         });
-    });
+    }
 
     // Create a Checkout Session with the selected product
     const createCheckoutSession = function (stripe) {
-        return fetch("payment_init.php", {
+        let quantity=document.getElementById('quantity').value;
+
+        return fetch("payment_init.php?quantity="+quantity, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
