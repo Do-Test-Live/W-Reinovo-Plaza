@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once("includes/dbConnect.php");
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +83,7 @@
                                     <a href="index.html#about">about us <i class="fal"></i></a>
                                 </li>
                                 <li>
-                                    <a href="magnet-power.html">Magnet Power <i class="fal"></i></a>
+                                    <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
                                 </li>
                                 <li>
                                     <a href="takumi.html">TAKUMI <i class="fal"></i></a>
@@ -107,7 +114,7 @@
                 <a href="index.html#about">about us <i class="fal"></i></a>
             </li>
             <li>
-                <a href="magnet-power.html">Magnet Power <i class="fal"></i></a>
+                <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
             </li>
             <li>
                 <a href="takumi.html">TAKUMI <i class="fal"></i></a>
@@ -202,11 +209,22 @@
                     <p>
                         ❑ 祛濕
                     </p>
-                    <p class="mt-3">
+                    <p class="mt-3 mb-3">
                         使用方法<br/><br/>
 
                         在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼布松脫或移位，然後安睡至明早，醒後撕掉，使用後用清水或濕紙巾清理便可。
                     </p>
+                    <div class="d-flex align-items-center mb-3">
+                        <p class="text-black fw-medium mr-2">Qty:</p>
+                        <div class="quantity-box d-flex align-items-center">
+                            <a href="javascript:void(0)" class="qtyBtn qtyDec"><i class="fal fa-minus"></i></a>
+                            <input class="qtyInput" type="text" name="quantity" value="1" min="1">
+                            <a href="javascript:void(0)" class="qtyBtn qtyInc"><i class="far fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <button class="btn btn-primary mr-4" id="payBtn"><i class="fal fa-shopping-cart mr-1"></i> Buy Now</button>
+                    </div>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->
@@ -299,6 +317,69 @@
 <script src="js/jquery.lazy.min.js"></script>
 <script src="js/rating.js"></script>
 <script src="js/main.js"></script>
+
+
+<!-- Stripe JavaScript library -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+
+    // Set Stripe publishable key to initialize Stripe.js
+    const stripe = Stripe('<?php echo STRIPE_PUBLISHABLE_KEY; ?>');
+
+    // Select payment button
+    const payBtn = document.querySelector("#payButton");
+
+    // Payment request handler
+    payBtn.addEventListener("click", function (evt) {
+
+        createCheckoutSession().then(function (data) {
+            if (data.sessionId) {
+                stripe.redirectToCheckout({
+                    sessionId: data.sessionId,
+                }).then(handleResult);
+            } else {
+                handleResult(data);
+            }
+        });
+    });
+
+    // Create a Checkout Session with the selected product
+    const createCheckoutSession = function (stripe) {
+        return fetch("payment_init.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                createCheckoutSession: 1,
+            }),
+        }).then(function (result) {
+            return result.json();
+        });
+    };
+
+    // Handle any errors returned from Checkout
+    const handleResult = function (result) {
+        if (result.error) {
+            showMessage(result.error.message);
+        }
+    };
+
+
+    // Display message
+    function showMessage(messageText) {
+        const messageContainer = document.querySelector("#paymentResponse");
+
+        messageContainer.classList.remove("hidden");
+        messageContainer.textContent = messageText;
+
+        setTimeout(function () {
+            messageContainer.classList.add("hidden");
+            messageText.textContent = "";
+        }, 5000);
+    }
+</script>
 </body>
 
 </html>
