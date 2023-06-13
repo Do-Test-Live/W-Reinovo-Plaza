@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once("includes/dbConnect.php");
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +86,7 @@
                                     <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
                                 </li>
                                 <li>
-                                    <a href="takumi.html">TAKUMI <i class="fal"></i></a>
+                                    <a href="takumi.php">TAKUMI <i class="fal"></i></a>
                                 </li>
                                 <li>
                                     <a href="pls.html">PLS <i class="fal"></i></a>
@@ -110,7 +117,7 @@
                 <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
             </li>
             <li>
-                <a href="takumi.html">TAKUMI <i class="fal"></i></a>
+                <a href="takumi.php">TAKUMI <i class="fal"></i></a>
             </li>
             <li>
                 <a href="pls.html">PLS <i class="fal"></i></a>
@@ -187,6 +194,9 @@
             <div class="col-lg-7">
                 <div class="product-details mt-lg-5 pt-lg-5 mt-0 pt-0">
                     <h3 class="mb-1 fw-semi-bold">產品名：TAKUMI 有機酵素「匠」</h3>
+                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
+                        <span class="text-color-1">HKD 3500.00</span>
+                    </div>
                     <p class="mb-3 mt-3">
                         <b>產地：</b>日本<br/>
                         <b>內容量：</b>淨含量170G<br/>
@@ -220,6 +230,18 @@
                         ❑ 改善排便狀況<br/>
                         ❑ 減輕偶發性或非持續的腹瀉或便秘
                     </p>
+
+                    <div class="d-flex align-items-center mb-3 mt-3">
+                        <p class="text-black fw-medium mr-2">Qty:</p>
+                        <div class="quantity-box d-flex align-items-center">
+                            <a href="javascript:void(0)" class="qtyBtn qtyDec"><i class="fal fa-minus"></i></a>
+                            <input class="qtyInput" type="text" name="quantity" id="quantity" value="1" min="1">
+                            <a href="javascript:void(0)" class="qtyBtn qtyInc"><i class="far fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <button class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();"><i class="fal fa-shopping-cart mr-1"></i> 購買</button>
+                    </div>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->
@@ -312,6 +334,70 @@
 <script src="js/jquery.lazy.min.js"></script>
 <script src="js/rating.js"></script>
 <script src="js/main.js"></script>
+
+<!-- Stripe JavaScript library -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+
+    // Set Stripe publishable key to initialize Stripe.js
+    const stripe = Stripe('<?php echo STRIPE_PUBLISHABLE_KEY; ?>');
+
+    // Select payment button
+    const payBtn = document.querySelector("#payButton");
+
+    // Payment request handler
+    function buyNow(){
+        document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'請稍等';
+        createCheckoutSession().then(function (data) {
+            if (data.sessionId) {
+                stripe.redirectToCheckout({
+                    sessionId: data.sessionId,
+                }).then(handleResult);
+            } else {
+                handleResult(data);
+            }
+        });
+    }
+
+    // Create a Checkout Session with the selected product
+    const createCheckoutSession = function (stripe) {
+        let quantity=document.getElementById('quantity').value;
+
+        return fetch("payment_init.php?quantity="+quantity+'&price=3500', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                createCheckoutSession: 1,
+            }),
+        }).then(function (result) {
+            return result.json();
+        });
+    };
+
+    // Handle any errors returned from Checkout
+    const handleResult = function (result) {
+        if (result.error) {
+            showMessage(result.error.message);
+        }
+    };
+
+
+    // Display message
+    function showMessage(messageText) {
+        const messageContainer = document.querySelector("#paymentResponse");
+
+        messageContainer.classList.remove("hidden");
+        messageContainer.textContent = messageText;
+
+        setTimeout(function () {
+            messageContainer.classList.add("hidden");
+            messageText.textContent = "";
+        }, 5000);
+    }
+</script>
 </body>
 
 </html>

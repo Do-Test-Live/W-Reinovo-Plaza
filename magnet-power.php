@@ -86,7 +86,7 @@ require_once 'config.php';
                                     <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
                                 </li>
                                 <li>
-                                    <a href="takumi.html">TAKUMI <i class="fal"></i></a>
+                                    <a href="takumi.php">TAKUMI <i class="fal"></i></a>
                                 </li>
                                 <li>
                                     <a href="pls.html">PLS <i class="fal"></i></a>
@@ -117,7 +117,7 @@ require_once 'config.php';
                 <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
             </li>
             <li>
-                <a href="takumi.html">TAKUMI <i class="fal"></i></a>
+                <a href="takumi.php">TAKUMI <i class="fal"></i></a>
             </li>
             <li>
                 <a href="pls.html">PLS <i class="fal"></i></a>

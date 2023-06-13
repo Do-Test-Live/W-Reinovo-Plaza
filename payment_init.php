@@ -23,6 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $request = json_decode($input);
 
     $quantity=$_GET['quantity'];
+    if(isset($_GET['price'])){
+        $productPrice=$_GET['price'];
+        $productName='這個產品幫我加價錢';
+    }
 }
 
 if (json_last_error() !== JSON_ERROR_NONE) {
