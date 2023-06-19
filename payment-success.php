@@ -20,6 +20,8 @@ require 'PHPMailer/src/SMTP.php';
 // Check whether stripe checkout session is not empty
 if (!empty($_GET['session_id'])) {
     $session_id = $_GET['session_id'];
+    $address = $_GET['address'];
+    $phone = $_GET['phone'];
 
     // Fetch transaction data from the database if already exists
     $sqlQ = "SELECT * FROM transactions WHERE stripe_checkout_session_id = ?";
@@ -97,9 +99,9 @@ if (!empty($_GET['session_id'])) {
                         $payment_id = $prevRow['id'];
                     } else {
                         // Insert transaction data into the database
-                        $sqlQ = "INSERT INTO transactions (customer_name,customer_email,item_name,item_number,item_price,item_price_currency,paid_amount,paid_amount_currency,txn_id,payment_status,stripe_checkout_session_id,created,modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
+                        $sqlQ = "INSERT INTO transactions (customer_name,customer_email,address,phone,item_name,item_number,item_price,item_price_currency,paid_amount,paid_amount_currency,txn_id,payment_status,stripe_checkout_session_id,created,modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
                         $stmt = $db->prepare($sqlQ);
-                        $stmt->bind_param("ssssdsdssss", $customer_name, $customer_email, $productName, $productID, $productPrice, $currency, $paidAmount, $paidCurrency, $transactionID, $payment_status, $session_id);
+                        $stmt->bind_param("ssssssdsdssss", $customer_name, $customer_email,$address,$phone, $productName, $productID, $productPrice, $currency, $paidAmount, $paidCurrency, $transactionID, $payment_status, $session_id);
                         $insert = $stmt->execute();
 
                         if ($insert) {

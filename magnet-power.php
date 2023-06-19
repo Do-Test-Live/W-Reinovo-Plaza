@@ -214,6 +214,14 @@ require_once 'config.php';
 
                         在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼布松脫或移位，然後安睡至明早，醒後撕掉，使用後用清水或濕紙巾清理便可。
                     </p>
+                    <div class="mb-3">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" id="phone" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Address</label>
+                        <input type="text" name="address" id="address" class="form-control"/>
+                    </div>
                     <div class="d-flex align-items-center mb-3">
                         <p class="text-black fw-medium mr-2">Qty:</p>
                         <div class="quantity-box d-flex align-items-center">
@@ -332,23 +340,33 @@ require_once 'config.php';
 
     // Payment request handler
     function buyNow(){
-        document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'請稍等';
-        createCheckoutSession().then(function (data) {
-            if (data.sessionId) {
-                stripe.redirectToCheckout({
-                    sessionId: data.sessionId,
-                }).then(handleResult);
-            } else {
-                handleResult(data);
-            }
-        });
+
+        let phone=document.getElementById('phone').value;
+        let address=document.getElementById('address').value;
+
+        if (phone !== "" && address !=="") {
+            document.getElementById('payBtn').innerHTML = '<i class="fa fa-spinner fa-spin"></i> ' + '請稍等';
+            createCheckoutSession().then(function (data) {
+                if (data.sessionId) {
+                    stripe.redirectToCheckout({
+                        sessionId: data.sessionId,
+                    }).then(handleResult);
+                } else {
+                    handleResult(data);
+                }
+            });
+        }else{
+            alert('Please fill up address and phone number field.')
+        }
     }
 
     // Create a Checkout Session with the selected product
     const createCheckoutSession = function (stripe) {
         let quantity=document.getElementById('quantity').value;
+        let phone=document.getElementById('phone').value;
+        let address=document.getElementById('address').value;
 
-        return fetch("payment_init.php?quantity="+quantity, {
+        return fetch("payment_init.php?quantity="+quantity+'&phone='+phone+'&address='+address, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

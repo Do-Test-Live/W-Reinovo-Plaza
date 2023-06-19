@@ -230,7 +230,14 @@ require_once 'config.php';
                         ❑ 改善排便狀況<br/>
                         ❑ 減輕偶發性或非持續的腹瀉或便秘
                     </p>
-
+                    <div class="mb-3">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" id="phone" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Address</label>
+                        <input type="text" name="address" id="address" class="form-control"/>
+                    </div>
                     <div class="d-flex align-items-center mb-3 mt-3">
                         <p class="text-black fw-medium mr-2">Qty:</p>
                         <div class="quantity-box d-flex align-items-center">
@@ -348,6 +355,11 @@ require_once 'config.php';
 
     // Payment request handler
     function buyNow(){
+        let phone=document.getElementById('phone').value;
+        let address=document.getElementById('address').value;
+
+        if (phone !== "" && address !=="") {
+
         document.getElementById('payBtn').innerHTML='<i class="fa fa-spinner fa-spin"></i> '+'請稍等';
         createCheckoutSession().then(function (data) {
             if (data.sessionId) {
@@ -358,13 +370,18 @@ require_once 'config.php';
                 handleResult(data);
             }
         });
+        }else{
+            alert('Please fill up address and phone number field.')
+        }
     }
 
     // Create a Checkout Session with the selected product
     const createCheckoutSession = function (stripe) {
         let quantity=document.getElementById('quantity').value;
+        let phone=document.getElementById('phone').value;
+        let address=document.getElementById('address').value;
 
-        return fetch("payment_init.php?quantity="+quantity+'&price=3500', {
+        return fetch("payment_init.php?quantity="+quantity+'&price=3500'+'&phone='+phone+'&address='+address, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

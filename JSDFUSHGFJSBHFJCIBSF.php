@@ -35,6 +35,8 @@ date_default_timezone_set("Asia/Hong_Kong");
         <th>SL</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
         <th>Product</th>
         <th>Quantity</th>
         <th>Paid Amount</th>
@@ -53,6 +55,8 @@ date_default_timezone_set("Asia/Hong_Kong");
             <td><?php echo $i + 1; ?></td>
             <td><?php echo $data[$i]["customer_name"]; ?></td>
             <td><?php echo $data[$i]["customer_email"]; ?></td>
+            <td><?php echo $data[$i]["address"]; ?></td>
+            <td><?php echo $data[$i]["phone"]; ?></td>
             <td><?php echo $data[$i]["item_name"]; ?></td>
             <td><?php echo $data[$i]["paid_amount"]/$data[$i]["item_price"]; ?></td>
             <td><?php echo $data[$i]["paid_amount"]; ?></td>
@@ -66,6 +70,8 @@ date_default_timezone_set("Asia/Hong_Kong");
         <th>SL</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
         <th>Product</th>
         <th>Quantity</th>
         <th>Paid Amount</th>
