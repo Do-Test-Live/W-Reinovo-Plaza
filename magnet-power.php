@@ -88,9 +88,9 @@ require_once 'config.php';
                                 <li>
                                     <a href="takumi.php">TAKUMI <i class="fal"></i></a>
                                 </li>
-                                <li>
-                                    <a href="pls.html">PLS <i class="fal"></i></a>
-                                </li>
+  <!--          <li>
+                <a href="pls.html">PLS <i class="fal"></i></a>
+            </li> -->
                                 <li>
                                     <a href="#">Contact us <i class="fal"></i></a>
                                 </li>
@@ -119,9 +119,9 @@ require_once 'config.php';
             <li>
                 <a href="takumi.php">TAKUMI <i class="fal"></i></a>
             </li>
-            <li>
+  <!--          <li>
                 <a href="pls.html">PLS <i class="fal"></i></a>
-            </li>
+            </li> -->
             <li>
                 <a href="#">Contact us <i class="fal"></i></a>
             </li>
@@ -215,23 +215,27 @@ require_once 'config.php';
                         在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼布松脫或移位，然後安睡至明早，醒後撕掉，使用後用清水或濕紙巾清理便可。
                     </p>
                     <div class="mb-3">
-                        <label>Phone</label>
+                        <label>電話</label>
                         <input type="tel" name="phone" id="phone" class="form-control"/>
                     </div>
                     <div class="mb-3">
-                        <label>Address</label>
+                        <label>地址。</label>
                         <input type="text" name="address" id="address" class="form-control"/>
                     </div>
                     <div class="d-flex align-items-center mb-3">
-                        <p class="text-black fw-medium mr-2">Qty:</p>
+                        <p class="text-black fw-medium mr-2">數量:</p>
                         <div class="quantity-box d-flex align-items-center">
                             <a href="javascript:void(0)" class="qtyBtn qtyDec"><i class="fal fa-minus"></i></a>
                             <input class="qtyInput" type="text" name="quantity" id="quantity" value="1" min="1">
                             <a href="javascript:void(0)" class="qtyBtn qtyInc"><i class="far fa-plus"></i></a>
                         </div>
                     </div>
+                    <p class="mb-3">
+                        購買
+                    </p>
                     <div class="d-flex align-items-center mb-3">
-                        <button class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();"><i class="fal fa-shopping-cart mr-1"></i> 購買</button>
+                        <button class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();">Stripe</button>
+                        <a class="btn btn-primary mr-4" href="https://app.octopus.com.hk/qrpayment?token=OEM03056391304011110512000120334449041EC5">Octopus</a>
                     </div>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
