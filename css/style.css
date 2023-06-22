@@ -2784,6 +2784,14 @@ a.icon-element:hover {
     display: none !important;
 }
 
+.logo{
+    max-width: 250px;
+}
+
+.footer-logo{
+    max-width: 250px;
+}
+
 /* Media query for mobile screens */
 @media (max-width: 767px) {
     .desktop-image {
@@ -2791,8 +2799,9 @@ a.icon-element:hover {
     }
 
     .logo{
-        max-width: 130px;
+        max-width: 220px;
     }
+
 
     .mobile-image {
         display: block !important;

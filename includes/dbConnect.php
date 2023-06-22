@@ -4,16 +4,16 @@ class DBController {
     private $user = "root";
     private $password = "";
     private $database = "reinovo";
-    private $from_email= "official@1-studiohk.com";
-    private $notify_email= "frogbidofficial@gmail.com";
+    private $from_email= "noreply@reinevoplaza.com.com";
+    private $notify_email= "contact@reinevoplaza.com.com";
     private $conn;
 
     function __construct() {
-        if($_SERVER['SERVER_NAME']=="test.1-studiohk.com"||$_SERVER['SERVER_NAME']=="www.test.1-studiohk.com"){
+        if($_SERVER['SERVER_NAME']=="reinevoplaza.com"||$_SERVER['SERVER_NAME']=="www.reinevoplaza.comm"){
             $this->host = "localhost";
-            $this->user = "uii8rjsjdmrev";
+            $this->user = "u6daj3gm8rxlp";
             $this->password = "u3!GIE1=]#qm";
-            $this->database = "dbobpoj1t3awvo";
+            $this->database = "dbfpdgxqb2hg0a";
         }
 
         $this->conn = $this->connectDB();
