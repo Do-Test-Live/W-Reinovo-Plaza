@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="TechyDevs" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Login - Reinovo Plaza</title>
+    <!-- Favicon -->
+    <link href="images/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Template CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="card p-3">
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Input Yor Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="checkpassword();">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.lazy.min.js"></script>
+<script src="js/rating.js"></script>
+<script src="js/main.js"></script>
+<script>
+    function checkpassword(){
+        let password = document.getElementById('password').value;
+
+        if (password=="@Bcd1234") {
+            window.location.href='JSDFUSHGFJSBHFJCIBSF.php';
+        }
+        else
+        {
+            alert("Password Not Match");
+        }
+    }
+</script>
+</body>
+</html>
