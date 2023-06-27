@@ -52,7 +52,7 @@ require_once 'config.php';
                     <div class="header-top-item">
                         <ul class="list-item list-item-white fs-15">
                             <li class="d-inline-block mr-3"><a href="tel:+18008012718"><i
-                                    class="fal fa-phone mr-2 fs-13"></i>+852 54144447</a></li>
+                                            class="fal fa-phone mr-2 fs-13"></i>+852 54144447</a></li>
 
                         </ul>
                     </div>
@@ -80,7 +80,7 @@ require_once 'config.php';
                                     <a href="index.html">home <i class="fal"></i></a>
                                 </li>
                                 <li>
-                                    <a href="index.html#about">about us <i class="fal"></i></a>
+                                    <a href="about.html">about us <i class="fal"></i></a>
                                 </li>
                                 <li>
                                     <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
@@ -88,9 +88,6 @@ require_once 'config.php';
                                 <li>
                                     <a href="takumi.php">TAKUMI <i class="fal"></i></a>
                                 </li>
-  <!--          <li>
-                <a href="pls.html">PLS <i class="fal"></i></a>
-            </li> -->
                                 <li>
                                     <a href="#">Contact us <i class="fal"></i></a>
                                 </li>
@@ -111,7 +108,7 @@ require_once 'config.php';
                 <a href="index.html">home <i class="fal"></i></a>
             </li>
             <li>
-                <a href="index.html#about">about us <i class="fal"></i></a>
+                <a href="about.html">about us <i class="fal"></i></a>
             </li>
             <li>
                 <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
@@ -119,9 +116,9 @@ require_once 'config.php';
             <li>
                 <a href="takumi.php">TAKUMI <i class="fal"></i></a>
             </li>
-  <!--          <li>
-                <a href="pls.html">PLS <i class="fal"></i></a>
-            </li> -->
+            <!--          <li>
+                          <a href="pls.html">PLS <i class="fal"></i></a>
+                      </li> -->
             <li>
                 <a href="#">Contact us <i class="fal"></i></a>
             </li>
@@ -181,39 +178,41 @@ require_once 'config.php';
             </div><!-- end col-lg-5 -->
             <div class="col-lg-7">
                 <div class="product-details mt-lg-5 pt-lg-5 mt-0 pt-0">
-                    <h3 class="mb-1 fw-semi-bold">產品名： Magnet Power 產地日本</h3>
-                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
-                        <span class="text-color-1">HKD 120.00</span>
-                    </div>
+                    <h3 class="mb-1 fw-semi-bold">產品名： Magnet Power 磁気樹液貼布</h3>
                     <p class="mb-3 mt-3">
-                        永久磁石樹液貼布
+                        產地：⽇本
                     </p>
                     <p>
-                        <b>內容量</b> 10片裝樹液貼布、10粒磁石
+                        內容量：10 片裝樹液貼布、10 粒磁⽯
                     </p>
                     <p class="mt-3">
                         產品簡介：
                     </p>
                     <p class="mt-3">
-                        • 磁石
+                        • 磁⽯
                     </p>
                     <p>
-                        • 日本國產木酢粉、竹酢粉、魚腥草粉、枇杷葉粉
+                        • ⽇本國產⽊酢粉、⽵酢粉、⿂腥草粉、枇杷葉粉
                     </p>
                     <p>
-                        • 將身體濕氣、多餘水分抽出體外
+                        • 將⾝體濕氣、多餘⽔分抽出體外
                     </p>
                     <p class="mt-3">
-                        ❑ 減輕腳部酸軟
+                        ❤️ 減輕腳部酸軟
                     </p>
                     <p>
-                        ❑ 祛濕
+                        ❤️ 祛濕
                     </p>
                     <p class="mt-3 mb-3">
-                        使用方法<br/><br/>
+                        使⽤⽅法<br/><br/>
 
-                        在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼布松脫或移位，然後安睡至明早，醒後撕掉，使用後用清水或濕紙巾清理便可。
+                        在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼
+                        布松脫或移位，然後安睡⾄明早，醒後撕掉，使⽤後⽤清⽔
+                        或濕紙⼱清理便可。
                     </p>
+                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
+                        <span class="text-color-1">HKD 120.00</span>
+                    </div>
                     <div class="mb-3">
                         <label>電話</label>
                         <input type="tel" name="phone" id="phone" class="form-control"/>

@@ -41,6 +41,7 @@ require_once 'config.php';
 </div>
 <!-- end per-loader -->
 
+
 <!-- ================================
             START HEADER AREA
 ================================= -->
@@ -52,7 +53,7 @@ require_once 'config.php';
                     <div class="header-top-item">
                         <ul class="list-item list-item-white fs-15">
                             <li class="d-inline-block mr-3"><a href="tel:+18008012718"><i
-                                    class="fal fa-phone mr-2 fs-13"></i>+852 54144447</a></li>
+                                            class="fal fa-phone mr-2 fs-13"></i>+852 54144447</a></li>
 
                         </ul>
                     </div>
@@ -80,7 +81,7 @@ require_once 'config.php';
                                     <a href="index.html">home <i class="fal"></i></a>
                                 </li>
                                 <li>
-                                    <a href="index.html#about">about us <i class="fal"></i></a>
+                                    <a href="about.html">about us <i class="fal"></i></a>
                                 </li>
                                 <li>
                                     <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
@@ -88,9 +89,6 @@ require_once 'config.php';
                                 <li>
                                     <a href="takumi.php">TAKUMI <i class="fal"></i></a>
                                 </li>
-  <!--          <li>
-                <a href="pls.html">PLS <i class="fal"></i></a>
-            </li> -->
                                 <li>
                                     <a href="#">Contact us <i class="fal"></i></a>
                                 </li>
@@ -111,7 +109,7 @@ require_once 'config.php';
                 <a href="index.html">home <i class="fal"></i></a>
             </li>
             <li>
-                <a href="index.html#about">about us <i class="fal"></i></a>
+                <a href="about.html">about us <i class="fal"></i></a>
             </li>
             <li>
                 <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
@@ -119,9 +117,9 @@ require_once 'config.php';
             <li>
                 <a href="takumi.php">TAKUMI <i class="fal"></i></a>
             </li>
-  <!--          <li>
-                <a href="pls.html">PLS <i class="fal"></i></a>
-            </li> -->
+            <!--          <li>
+                          <a href="pls.html">PLS <i class="fal"></i></a>
+                      </li> -->
             <li>
                 <a href="#">Contact us <i class="fal"></i></a>
             </li>
@@ -150,7 +148,12 @@ require_once 'config.php';
         <div class="row">
             <div class="col-lg-5">
                 <div class="tab-content" id="myTabContent">
-                    <div aria-labelledby="product-gallery-one-tab" class="tab-pane show active" id="product-gallery-one"
+                    <div aria-labelledby="product-gallery-three-tab" class="tab-pane show active" id="product-gallery-three"
+                         role="tabpanel">
+                        <img alt="full-image" class="w-100 lazy" data-src="images/products/1_3.jpg"
+                             src="images/products/1_3.jpg">
+                    </div>
+                    <div aria-labelledby="product-gallery-one-tab" class="tab-pane" id="product-gallery-one"
                          role="tabpanel">
                         <img alt="full-image" class="w-100 lazy" data-src="images/products/1_1.jpg"
                              src="images/products/1_1.jpg">
@@ -160,15 +163,18 @@ require_once 'config.php';
                         <img alt="full-image" class="w-100 lazy" data-src="images/products/1_2.jpg"
                              src="images/products/1_2.jpg">
                     </div>
-                    <div aria-labelledby="product-gallery-three-tab" class="tab-pane" id="product-gallery-three"
-                         role="tabpanel">
-                        <img alt="full-image" class="w-100 lazy" data-src="images/products/1_3.jpg"
-                             src="images/products/1_3.jpg">
-                    </div><!-- end tab-pane -->
+                    <!-- end tab-pane -->
                 </div><!-- end tab-content -->
                 <ul class="nav nav-tabs product-gallery-nav  justify-content-center mb-4" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a aria-controls="product-gallery-one" aria-selected="true" class="nav-link active"
+                        <a aria-controls="product-gallery-two" aria-selected="false" class="nav-link active" data-toggle="tab"
+                           href="#product-gallery-three" id="product-gallery-three-tab" role="tab">
+                            <img alt="small-image" class="lazy" data-src="images/products/1_3.jpg"
+                                 src="images/products/1_3.jpg">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-controls="product-gallery-one" aria-selected="true" class="nav-link"
                            data-toggle="tab" href="#product-gallery-one" id="product-gallery-one-tab"
                            role="tab">
                             <img alt="small-image" class="lazy" data-src="images/products/1_1.jpg"
@@ -182,54 +188,71 @@ require_once 'config.php';
                                  src="images/products/1_2.jpg">
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a aria-controls="product-gallery-two" aria-selected="false" class="nav-link" data-toggle="tab"
-                           href="#product-gallery-three" id="product-gallery-three-tab" role="tab">
-                            <img alt="small-image" class="lazy" data-src="images/products/1_3.jpg"
-                                 src="images/products/1_3.jpg">
-                        </a>
-                    </li>
+
                 </ul>
             </div><!-- end col-lg-5 -->
             <div class="col-lg-7">
                 <div class="product-details mt-lg-5 pt-lg-5 mt-0 pt-0">
                     <h3 class="mb-1 fw-semi-bold">產品名：TAKUMI 有機酵素「匠」</h3>
-                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
-                        <span class="text-color-1">HKD 3500.00</span>
-                    </div>
+                    <section class="cta-area bg-gray section--padding">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="position-relative">
+                                        <img alt="" class="w-100 rounded-6 lazy" data-src="images/products/thumb.PNG"
+                                             src="images/products/thumb.PNG">
+                                        <div class="video-box position-absolute top-0 left-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                            <a class="icon-element hover-y" data-fancybox="preview-video"
+                                               href="https://www.youtube.com/watch?v=OJF3Egdzdyc" title="Play Video">
+                                                <i class="fas fa-play"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end row -->
+                        </div><!-- end container -->
+                    </section><!-- end cta-area -->
                     <p class="mb-3 mt-3">
-                        <b>產地：</b>日本<br/>
-                        <b>內容量：</b>淨含量170G<br/>
-                        <b>食用方式：</b>每次1茶匙，每日1-2次，每樽約1-2月份量。
+                        產地：⽇本<br/>
                     </p>
+                    <p class="mt-3">
+                        內容量：淨含量 170G
+                    </p>
+                    <p class="mt-3">
+                        食⽤⽅式：每次 1 茶匙，每⽇ 1-2 次，每樽約 1-2 ⽉份量。）
+                    </p>
+                    <img src="images/products/new_takumi.png" class="img-fluid mt-3" style="width: 100%;">
                     <p class="mt-3">
                         產品簡介：
                     </p>
                     <p class="mt-3">
-                        ·有機原料100%<br/>
-                        ·日本有機JAS認證<br/>
-                        ·完全無添加<br/>
-                        ·非加熱加工發酵<br/>
-                        ·保留有機食材營養<br/>
-                        ·嚴選日本酵母<br/>
-                        ·不使用糖類（白糖、低聚糖、人造甜味劑）
+                        ❑ 有機原料 100%<br/>
+                        ❑ ⽇本有機 JAS 認證<br/>
+                        ❑ 完全無添加<br/>
+                        ❑ 非加熱加⼯發酵<br/>
+                        ❑ 保留有機食材營養<br/>
+                        ❑ 嚴選⽇本酵⺟<br/>
+                        ❑ 不使⽤糖類（⽩糖、低聚糖、⼈造甜味劑）
                     </p>
                     <p class="mt-3">
-                        ❑ 促進腸臟蠕動<br/>
-                        ❑ 促進食物消化吸收<br/>
-                        ❑ 增加益菌、減少害菌及有害物質生成<br/>
-                        ❑ 健脾消食<br/>
-                        ❑ 減輕胃痛<br/>
-                        ❑ 減輕胃灼熱<br/>
-                        ❑ 減輕胃酸過多<br/>
-                        ❑ 減輕腸胃氣脹<br/>
-                        ❑ 減輕消化不良<br/>
-                        ❑ 減輕腸絞痛<br/>
-                        ❑ 減輕惡心<br/>
-                        ❑ 減輕口臭<br/>
-                        ❑ 改善排便狀況<br/>
-                        ❑ 減輕偶發性或非持續的腹瀉或便秘
+                        ❤️ 促進腸臟蠕動<br/>
+                        ❤️ 促進食物消化吸收<br/>
+                        ❤️ 增加益菌、減少害菌及有害物質⽣成<br/>
+                        ❤️ 健脾消食<br/>
+                        ❤️ 減輕胃痛<br/>
+                        ❤️ 減輕胃灼熱<br/>
+                        ❤️ 減輕胃酸過多<br/>
+                        ❤️ 減輕腸胃氣脹<br/>
+                        ❤️ 減輕消化不良<br/>
+                        ❤️ 減輕腸絞痛<br/>
+                        ❤️ 減輕惡⼼<br/>
+                        ❤️ 減輕⼝臭<br/>
+                        ❤️ 改善排便狀況<br/>
+                        ❤️ 減輕偶發性或非持續的腹瀉或便秘<br/>
                     </p>
+                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
+                        <span class="text-color-1">HKD 3500.00</span>
+                    </div>
                     <div class="mb-3">
                         <label>電話</label>
                         <input type="tel" name="phone" id="phone" class="form-control"/>
