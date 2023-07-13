@@ -193,7 +193,7 @@ require_once 'config.php';
             </div><!-- end col-lg-5 -->
             <div class="col-lg-7">
                 <div class="product-details mt-lg-5 pt-lg-5 mt-0 pt-0">
-                    <h3 class="mb-1 fw-semi-bold">產品名：TAKUMI 有機酵素「匠」</h3>
+                    <h3 class="mb-1 fw-semi-bold">產品名：TAKUMI 「匠」有機酵素</h3>
                     <section class="cta-area bg-gray section--padding">
                         <div class="container">
                             <div class="row">
