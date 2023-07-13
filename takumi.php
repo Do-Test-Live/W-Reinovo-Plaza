@@ -253,14 +253,17 @@ require_once 'config.php';
                     <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
                         <span class="text-color-1">HKD 3500.00</span>
                     </div>
+                    <form action="octopus-payment.php" method="get">
                     <div class="mb-3">
                         <label>電話</label>
-                        <input type="tel" name="phone" id="phone" class="form-control"/>
+                        <input type="tel" name="phone" id="phone" class="form-control" required/>
                     </div>
                     <div class="mb-3">
                         <label>地址</label>
-                        <input type="text" name="address" id="address" class="form-control"/>
+                        <input type="text" name="address" id="address" class="form-control" required/>
                     </div>
+                        <input type="hidden" value="TAKUMI 「匠」有機酵素" name="product" required/>
+                        <input type="hidden" value="takumi" name="page_name" required/>
                     <div class="d-flex align-items-center mb-3 mt-3">
                         <p class="text-black fw-medium mr-2">數量:</p>
                         <div class="quantity-box d-flex align-items-center">
@@ -273,9 +276,10 @@ require_once 'config.php';
                         購買
                     </p>
                     <div class="d-flex align-items-center mb-3">
-                        <button class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();">信用卡</button>
-                        <a class="btn btn-primary mr-4" href="https://app.octopus.com.hk/qrpayment?token=OEM03056391304011110635000012033444904037B">八達通</a>
+                        <button type="button" class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();">信用卡</button>
+                        <button type="submit" class="btn btn-primary mr-4">八達通</button>
                     </div>
+                    </form>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->

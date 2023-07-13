@@ -40,6 +40,7 @@ date_default_timezone_set("Asia/Hong_Kong");
         <th>Product</th>
         <th>Quantity</th>
         <th>Paid Amount</th>
+        <th>Gateway</th>
         <th>Status</th>
         <th>Transaction Number</th>
     </tr>
@@ -60,6 +61,7 @@ date_default_timezone_set("Asia/Hong_Kong");
             <td><?php echo $data[$i]["item_name"]; ?></td>
             <td><?php echo $data[$i]["paid_amount"]/$data[$i]["item_price"]; ?></td>
             <td><?php echo $data[$i]["paid_amount"]; ?></td>
+            <td><?php echo $data[$i]["gateway"]; ?></td>
             <td><?php echo $data[$i]["payment_status"]; ?></td>
             <td><?php echo $data[$i]["txn_id"]; ?></td>
         </tr>
@@ -75,6 +77,7 @@ date_default_timezone_set("Asia/Hong_Kong");
         <th>Product</th>
         <th>Quantity</th>
         <th>Paid Amount</th>
+        <th>Gateway</th>
         <th>Status</th>
         <th>Transaction Number</th>
     </tr>

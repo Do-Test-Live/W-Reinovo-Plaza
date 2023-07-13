@@ -4,6 +4,35 @@ require_once("includes/dbConnect.php");
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 require_once 'config.php';
+
+
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $gateway = 'Octopus';
+    $product = $_POST['product'];
+    $page_name = $_POST['page_name'];
+
+    $insert = $db_handle->insertQuery("INSERT INTO `transactions`(`customer_name`, `customer_email`, `address`, `phone`, `gateway`, `item_name`) VALUES ('$name','$email','$address','$phone','$gateway','$product')");
+
+    if ($insert) {
+        if ($page_name == 'takumi') {
+            ?>
+            <script>
+                window.location = 'https://app.octopus.com.hk/qrpayment?token=OEM03056391304011110635000012033444904037B';
+            </script>
+            <?php
+        } else {
+            ?>
+            <script>
+                window.location = 'https://app.octopus.com.hk/qrpayment?token=OEM03056391304011110512000120334449041EC5';
+            </script>
+            <?php
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +41,7 @@ require_once 'config.php';
     <meta content="TechyDevs" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Magnet Power - Reinovo Plaza</title>
+    <title>Octopus Payment - Reinovo Plaza</title>
     <!-- Favicon -->
     <link href="images/favicon.png" rel="icon">
 
@@ -40,6 +69,7 @@ require_once 'config.php';
     </div>
 </div>
 <!-- end per-loader -->
+
 
 <!-- ================================
             START HEADER AREA
@@ -134,7 +164,7 @@ require_once 'config.php';
     <div class="container py-3">
         <ol class="breadcrumb fs-15">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li aria-current="page" class="breadcrumb-item active">Magnet Power</li>
+            <li aria-current="page" class="breadcrumb-item active">Octopus Payment</li>
         </ol>
     </div>
 </nav>
@@ -145,127 +175,28 @@ require_once 'config.php';
 <section class="product-area pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5">
-                <div class="tab-content" id="myTabContent">
-                    <div aria-labelledby="product-gallery-one-tab" class="tab-pane show active" id="product-gallery-one"
-                         role="tabpanel">
-                        <img alt="full-image" class="w-100 lazy" data-src="images/products/3_1.jpg"
-                             src="images/products/3_1.jpg">
-                    </div><!-- end tab-pane -->
-                    <div aria-labelledby="product-gallery-two-tab" class="tab-pane" id="product-gallery-two"
-                         role="tabpanel">
-                        <img alt="full-image" class="w-100 lazy" data-src="images/products/3_2.jpg"
-                             src="images/products/3_2.jpg">
-                    </div><!-- end tab-pane -->
-                </div><!-- end tab-content -->
-                <ul class="nav nav-tabs product-gallery-nav  justify-content-center mb-4" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a aria-controls="product-gallery-one" aria-selected="true" class="nav-link active"
-                           data-toggle="tab" href="#product-gallery-one" id="product-gallery-one-tab"
-                           role="tab">
-                            <img alt="small-image" class="lazy" data-src="images/products/3_1.jpg"
-                                 src="images/products/3_1.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a aria-controls="product-gallery-two" aria-selected="false" class="nav-link" data-toggle="tab"
-                           href="#product-gallery-two" id="product-gallery-two-tab" role="tab">
-                            <img alt="small-image" class="lazy" data-src="images/products/3_2.jpg"
-                                 src="images/products/3_2.jpg">
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- end col-lg-5 -->
-            <div class="col-lg-7">
+            <div class="col-lg-7 mx-auto">
                 <div class="product-details mt-lg-5 pt-lg-5 mt-0 pt-0">
-                    <h3 class="mb-1 fw-semi-bold">產品名： Magnet Power 磁気樹液貼布</h3>
-                    <p class="mb-3 mt-3">
-                        產地：⽇本
-                    </p>
-                    <p>
-                        內容量：10 片裝樹液貼布、10 粒磁⽯
-                    </p>
-                    <p class="mt-3">
-                        產品簡介：
-                    </p>
-                    <p class="mt-3">
-                        • 磁⽯
-                    </p>
-                    <p>
-                        • ⽇本國產⽊酢粉、⽵酢粉、⿂腥草粉、枇杷葉粉
-                    </p>
-                    <p>
-                        • 將⾝體濕氣、多餘⽔分抽出體外
-                    </p>
-                    <p class="mt-3">
-                        ❤️ 減輕腳部酸軟
-                    </p>
-                    <p>
-                        ❤️ 祛濕
-                    </p>
-                    <p class="mt-3 mb-3">
-                        使⽤⽅法<br/><br/>
-
-                        在睡前將貼布貼在腳底位置，貼後盡量減少走動，以免膠貼
-                        布松脫或移位，然後安睡⾄明早，醒後撕掉，使⽤後⽤清⽔
-                        或濕紙⼱清理便可。
-                    </p>
-                    <div class="price-range fs-20 fw-semi-bold mb-3 mt-3">
-                        <span class="text-color-1">HKD 120.00</span>
-                    </div>
-                    <form action="octopus-payment.php" method="get">
+                    <form action="" method="post">
                         <div class="mb-3">
-                            <label>電話</label>
-                            <input type="tel" name="phone" id="phone" class="form-control" required/>
+                            <label>姓名</label>
+                            <input type="text" name="name" id="name" class="form-control" required/>
                         </div>
                         <div class="mb-3">
-                            <label>地址</label>
-                            <input type="text" name="address" id="address" class="form-control" required/>
+                            <label>電郵</label>
+                            <input type="email" name="email" id="email" class="form-control" required/>
                         </div>
-                        <input type="hidden" value="Magnet Power 磁気樹液貼布" name="product" required/>
-                        <input type="hidden" value="magnet_power" name="page_name" required/>
+                        <input type="hidden" value="<?php echo $_GET['phone']; ?>" name="phone" required/>
+                        <input type="hidden" value="<?php echo $_GET['address']; ?>" name="address" required/>
+                        <input type="hidden" value="<?php echo $_GET['product']; ?>" name="product" required/>
+                        <input type="hidden" value="<?php echo $_GET['page_name']; ?>" name="page_name" required/>
                         <div class="d-flex align-items-center mb-3">
-                            <p class="text-black fw-medium mr-2">數量:</p>
-                            <div class="quantity-box d-flex align-items-center">
-                                <a href="javascript:void(0)" class="qtyBtn qtyDec"><i class="fal fa-minus"></i></a>
-                                <input class="qtyInput" type="text" name="quantity" id="quantity" value="1" min="1">
-                                <a href="javascript:void(0)" class="qtyBtn qtyInc"><i class="far fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <p class="mb-3">
-                            購買
-                        </p>
-                        <div class="d-flex align-items-center mb-3">
-                            <button  type="button" class="btn btn-primary mr-4" id="payBtn" onclick="buyNow();">信用卡</button>
-                            <button type="submit" class="btn btn-primary mr-4">八達通</button>
+                            <button type="submit" name="submit" class="btn btn-primary mr-4">前往</button>
                         </div>
                     </form>
                 </div><!-- end product-details -->
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->
-        <div class="product-details-tab-wrap pt-50">
-            <div class="tab-content">
-                <div aria-labelledby="product-description-tab" class="tab-pane show active" id="product-description"
-                     role="tabpanel">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6 mt-5">
-                                    <div class="text-center">
-                                        <img alt="" class="img-fluid" src="images/product-gallery/1_1.jpg"/>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-5">
-                                    <div class="text-center">
-                                        <img alt="" class="img-fluid" src="images/product-gallery/1_2.jpg"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                </div><!-- end tab-pane -->
-            </div><!-- end tab-content -->
-        </div>
     </div><!-- end container -->
 </section><!-- end product-area -->
 <!-- ================================
@@ -333,7 +264,6 @@ require_once 'config.php';
 <script src="js/rating.js"></script>
 <script src="js/main.js"></script>
 
-
 <!-- Stripe JavaScript library -->
 <script src="https://js.stripe.com/v3/"></script>
 
@@ -347,11 +277,11 @@ require_once 'config.php';
 
     // Payment request handler
     function buyNow() {
-
         let phone = document.getElementById('phone').value;
         let address = document.getElementById('address').value;
 
         if (phone !== "" && address !== "") {
+
             document.getElementById('payBtn').innerHTML = '<i class="fa fa-spinner fa-spin"></i> ' + '請稍等';
             createCheckoutSession().then(function (data) {
                 if (data.sessionId) {
@@ -373,7 +303,7 @@ require_once 'config.php';
         let phone = document.getElementById('phone').value;
         let address = document.getElementById('address').value;
 
-        return fetch("payment_init.php?quantity=" + quantity + '&phone=' + phone + '&address=' + address, {
+        return fetch("payment_init.php?quantity=" + quantity + '&price=3500' + '&phone=' + phone + '&address=' + address, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -410,3 +340,4 @@ require_once 'config.php';
 </body>
 
 </html>
+
