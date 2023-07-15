@@ -105,22 +105,22 @@ require_once 'config.php';
         </a><!-- end off-canvas-close -->
         <ul class="list-item off-canvas-menu">
             <li>
-                <a href="index.html">home <i class="fal"></i></a>
+                <a href="index.html">主頁 <i class="fal"></i></a>
             </li>
             <li>
-                <a href="about.html">about us <i class="fal"></i></a>
+                <a href="about.html">關於我們 <i class="fal"></i></a>
             </li>
             <li>
-                <a href="magnet-power.php">Magnet Power <i class="fal"></i></a>
+                <a href="magnet-power.php">磁石樹液貼布 <i class="fal"></i></a>
             </li>
             <li>
-                <a href="takumi.php">TAKUMI <i class="fal"></i></a>
+                <a href="takumi.php">「匠」有機酵素 <i class="fal"></i></a>
             </li>
             <!--          <li>
                           <a href="pls.html">PLS <i class="fal"></i></a>
                       </li> -->
             <li>
-                <a href="#">Contact us <i class="fal"></i></a>
+                <a href="#">聯繫我們 <i class="fal"></i></a>
             </li>
         </ul>
     </div><!-- end off-canvas -->
